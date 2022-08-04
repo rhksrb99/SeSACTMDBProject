@@ -8,20 +8,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeSACTMDBProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="BYZ-38-t0r" customClass="SearchViewController" customModule="SeSACTMDBProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="w2e-zP-zLx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieF-T7-e1Y">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="q7x-bU-ghI"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="w2e-zP-zLx" firstAttribute="top" secondItem="ieF-T7-e1Y" secondAttribute="bottom" id="5n2-Ok-DTu"/>
+                            <constraint firstItem="ieF-T7-e1Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="85g-VY-lTj"/>
+                            <constraint firstItem="w2e-zP-zLx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZAV-RY-TmG"/>
+                            <constraint firstItem="ieF-T7-e1Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zea-lZ-9ec"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w2e-zP-zLx" secondAttribute="trailing" id="o3D-T5-Fcc"/>
+                            <constraint firstItem="ieF-T7-e1Y" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oTw-xQ-MsG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="w2e-zP-zLx" secondAttribute="bottom" id="upv-rf-O9I"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="w2e-zP-zLx" id="Wzz-fB-bsW"/>
+                        <outlet property="navigation" destination="ieF-T7-e1Y" id="HXx-QL-Mr7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133" y="110"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="w7U-nx-3Dd">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailViewController" id="aYs-l7-Arz" customClass="MovieDetailViewController" customModule="SeSACTMDBProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EA-c4-kFx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="AtK-yP-zvf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTo-j3-p94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="110"/>
         </scene>
     </scenes>
     <resources>
