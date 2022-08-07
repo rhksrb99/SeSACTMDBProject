@@ -39,11 +39,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Functions
     
-    func linkButtonClicked(index:Int) {
+    @objc func linkButtonClicked(sender:UIButton) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: MovieInfoWebViewController.reuseIdentifier) as! MovieInfoWebViewController
+        let sender = sender.tag
         
-        vc.movieid = movieList[index].id
+        vc.movieid = movieList[sender].id
+        vc.cellNum = sender
+        
+        print(movieList[sender].id)
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -63,7 +67,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.lb_genre.text = movieGenre[count]
         cell.img_main.kf.setImage(with: URL(string: EndPoint.tmdbBgImage+movieList[indexPath.row].backGroundImage))
 //        let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieTableViewCell.reuseIdentifier, for: indexPath) as! MainMovieTableViewCell
-        cell.btn_YoutubeLink.addTarget(self, action: Selector("\(linkButtonClicked(index: indexPath.row))"), for: .touchUpInside)
+        
+        cell.btn_YoutubeLink.addTarget(self, action: #selector(linkButtonClicked), for: .touchUpInside)
+        cell.btn_YoutubeLink.tag = indexPath.row
         
         if actorName2.count - 1 >= indexPath.row {
             cell.lb_actors.text = "\(actorName2[indexPath.row][0].actorName), \(actorName2[indexPath.row][1].actorName), \(actorName2[indexPath.row][2].actorName),\(actorName2[indexPath.row][3].actorName)"
