@@ -9,15 +9,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MovieDeatailTableViewCell" customModule="SeSACTMDBProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="MovieDeatailTableViewCell" customModule="SeSACTMDBProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIn-77-MTo">
+                        <rect key="frame" x="78" y="8" width="41.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Uf-Tk-1Af">
+                        <rect key="frame" x="78" y="32.5" width="41.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-Ac-5Em">
+                        <rect key="frame" x="4" y="0.0" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ieX-Ac-5Em" secondAttribute="height" multiplier="1:1" id="k9a-TS-Lae"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ieX-Ac-5Em" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="AGu-zk-867"/>
+                    <constraint firstItem="ieX-Ac-5Em" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="FPg-Ya-ukS"/>
+                    <constraint firstItem="1Uf-Tk-1Af" firstAttribute="leading" secondItem="kIn-77-MTo" secondAttribute="leading" id="J98-Rb-pBe"/>
+                    <constraint firstItem="kIn-77-MTo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="NHa-GW-NH1"/>
+                    <constraint firstAttribute="bottom" secondItem="ieX-Ac-5Em" secondAttribute="bottom" id="PCJ-Vs-a0d"/>
+                    <constraint firstItem="kIn-77-MTo" firstAttribute="leading" secondItem="ieX-Ac-5Em" secondAttribute="trailing" constant="4" id="Qdr-Cg-bY1"/>
+                    <constraint firstItem="1Uf-Tk-1Af" firstAttribute="top" secondItem="kIn-77-MTo" secondAttribute="bottom" constant="4" id="eUb-Ry-Ynh"/>
+                    <constraint firstItem="ieX-Ac-5Em" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="hgT-Lz-kTr"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="132" y="102"/>
+            <connections>
+                <outlet property="img_actor" destination="ieX-Ac-5Em" id="4bf-1f-czJ"/>
+                <outlet property="lb_actorName" destination="1Uf-Tk-1Af" id="M9r-xY-1ER"/>
+                <outlet property="lb_actorOriginalName" destination="kIn-77-MTo" id="v7V-BN-gD6"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="118.52678571428571"/>
         </tableViewCell>
     </objects>
 </document>

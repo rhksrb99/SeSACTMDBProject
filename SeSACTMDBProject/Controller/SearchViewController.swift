@@ -13,54 +13,77 @@ import SwiftyJSON
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var navigation: UINavigationBar!
     @IBOutlet weak var mainTableView: UITableView!
     
-    var movieName:[String] = []
-    var movieRate:[String] = []
-    var movieImage:[String] = []
-    var movieBgImage:[String] = []
-    var movieId:[String] = []
-    var movieDate:[String] = []
     var movieGenre:[Int:String] = [:]
     var movieGenreId:[Int] = []
+    
+    var movieList : [Movie] = []
     
     var genreId:[Int] = []
     var genreName:[String] = []
 
-    var actorName:[String] = []
+    var actorName:[Actor] = []
+    var actorName2:[[Actor]] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadGenre()
         tableViewNib()
+        LoadGenre()
+        tmdb_movie()
         configureView()
         designNavigation()
-        tmdb_movie()
-
+        
     }
     
     // MARK: - Functions
     
+    func linkButtonClicked(index:Int) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: MovieInfoWebViewController.reuseIdentifier) as! MovieInfoWebViewController
+        
+        vc.movieid = movieList[index].id
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieId.count
+        return movieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieTableViewCell.reuseIdentifier, for: indexPath) as! MainMovieTableViewCell
+        
         let count = movieGenreId.randomElement()!
         
-        cell.lb_title.text = movieName[indexPath.row]
-        cell.lb_releaseDate.text = movieDate[indexPath.row]
-        cell.lb_rate.text = movieRate[indexPath.row]
+        cell.lb_title.text = movieList[indexPath.row].title
+        cell.lb_releaseDate.text = movieList[indexPath.row].date
+        cell.lb_rate.text = movieList[indexPath.row].rate
         cell.lb_genre.text = movieGenre[count]
-        cell.img_main.kf.setImage(with: URL(string: EndPoint.tmdbBgImage+movieBgImage[indexPath.row]))
-        cell.lb_actors.text = actorName[indexPath.row]
+        cell.img_main.kf.setImage(with: URL(string: EndPoint.tmdbBgImage+movieList[indexPath.row].backGroundImage))
+//        let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieTableViewCell.reuseIdentifier, for: indexPath) as! MainMovieTableViewCell
+        cell.btn_YoutubeLink.addTarget(self, action: Selector("\(linkButtonClicked(index: indexPath.row))"), for: .touchUpInside)
         
+        if actorName2.count - 1 >= indexPath.row {
+            cell.lb_actors.text = "\(actorName2[indexPath.row][0].actorName), \(actorName2[indexPath.row][1].actorName), \(actorName2[indexPath.row][2].actorName),\(actorName2[indexPath.row][3].actorName)"
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        print("didSelectRowAt Click")
+        // 셀을 클릭했을 떄의 화면전환.
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: MovieDetailViewController.reuseIdentifier) as! MovieDetailViewController
+        
+        vc.movieInfo = movieList[indexPath.row]
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        print("didSelectRowAt Clicked")
     }
     
     func tableViewNib() {
@@ -72,19 +95,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func configureView() {
         mainTableView.backgroundColor = .clear
         mainTableView.separatorColor = .clear
-        mainTableView.rowHeight = 350
+        mainTableView.rowHeight = 380
     }
     
+    // MARK: - design
+    
+    // 셀디자인 코드 작성 후 정리해야 함
     func designCell() {
         
     }
     
     func designNavigation() {
         
-        navigationItem.title = ""
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "listbullet"), style: .plain, target: self, action: #selector(category))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchMovie))
+        self.navigationItem.title = ""
+        self.navigationItem.backButtonTitle = ""
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(category))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchMovie))
     }
+    
+    // MARK: - @objc Functions
     
     @objc func category() {
         
@@ -94,6 +123,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    // MARK: - Alamofire
+    
     func tmdb_movie() {
         let url = "\(EndPoint.tmdbMovieURL)\(APIKey.tmdbKey)"
         AF.request(url, method: .get).validate().responseData { response in
@@ -101,20 +132,28 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             case .success(let value):
                 let json = JSON(value)
 //                print("JSON: \(json)")
-                
                 for movie in json["results"].arrayValue{
-                    self.movieId.append(movie["id"].stringValue)
-                    self.movieName.append(movie["original_title"].stringValue)
-                    self.movieImage.append(movie["poster_path"].stringValue)
-                    self.movieBgImage.append(movie["backdrop_path"].stringValue)
-                    self.movieDate.append(movie["release_date"].stringValue)
-                    self.movieRate.append(String(format:"%.1f", movie["vote_average"].doubleValue))
+                    let id = movie["id"].stringValue
+                    let title = movie["original_title"].stringValue
+                    let image = movie["poster_path"].stringValue
+                    let bgimage = movie["backdrop_path"].stringValue
+                    let date = movie["date"].stringValue
+                    let rate = String(format: "%.1f",movie["vote_average"].doubleValue)
+                    let overview = movie["overview"].stringValue
+                    var genreIds = 0
+                    for item in movie["genre_ids"].arrayValue {
+                        genreIds = item.intValue
+                    }
+                    
+                    self.movieList.append(Movie(id: id, title: title, image: image, backGroundImage: bgimage, date: date, rate: rate, genreId: genreIds, overview: overview))
+
                     for item in movie["genre_ids"].arrayValue {
                         self.movieGenreId.append(item.intValue)
                     }
                     // 각 영화마다의 아이디를 넣어 배우를 찾는 함수 실행 완료
-                    self.tmdb_person(id: movie["id"].stringValue)
+                    self.tmdb_person(id: id)
                 }
+                
                 self.mainTableView.reloadData()
                 
             case .failure(let error):
@@ -131,15 +170,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let json = JSON(value)
 //                print("JSON: \(json)")
                 
-                var actor : String = ""
                 for actornames in json["cast"].arrayValue{
-//                    print(actornames["name"].stringValue)
-                    actor += actornames["name"].stringValue
-                    actor += ", "
-//                    self.actorName.append(actornames["name"].stringValue)
+                    
+                    let realName = actornames["name"].stringValue
+                    let movieName = actornames["character"].stringValue
+                    let profileUrl = actornames["profile_path"].stringValue
+                    
+                    let actor = Actor(actorName: realName, actorCharacter: movieName, actorImage: profileUrl)
+                    self.actorName.append(actor)
                 }
-                self.actorName.append(actor)
-                print("배우 이름 : \(self.actorName)")
+                self.actorName2.append(self.actorName)
+                
+                self.actorName.removeAll()
+                
+                self.mainTableView.reloadData()
+                
                 
             case .failure(let error):
                 print(error)
@@ -167,5 +212,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    
+//    func loadVideo() {
+//        let url = "\(EndPoint.tmdbYoutubeFirstURL)\(movieid)\(EndPoint.tmdbYoutubeSecondURL)\(APIKey.tmdbKey)&language=kr-KR"
+//        AF.request(url, method: .get).validate().responseData { response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//                print("JSON: \(json)")
+//                
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
     
 }
