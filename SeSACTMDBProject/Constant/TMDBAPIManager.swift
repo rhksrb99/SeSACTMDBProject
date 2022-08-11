@@ -121,7 +121,19 @@ class TMDBAPIManager {
                     posterImageList.append(value)
                     TMDBAPIManager.shared.loadMovie(query: self.tvList[3].1) { value in
                         posterImageList.append(value)
-                        completionHandler(posterImageList)
+                        TMDBAPIManager.shared.loadMovie(query: self.tvList[4].1) { value in
+                            posterImageList.append(value)
+                            TMDBAPIManager.shared.loadMovie(query: self.tvList[5].1) { value in
+                                posterImageList.append(value)
+                                TMDBAPIManager.shared.loadMovie(query: self.tvList[6].1) { value in
+                                    posterImageList.append(value)
+                                    TMDBAPIManager.shared.loadMovie(query: self.tvList[7].1) { value in
+                                        posterImageList.append(value)
+                                        completionHandler(posterImageList)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

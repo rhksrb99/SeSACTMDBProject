@@ -10,6 +10,7 @@
 		9258C4DB289FAA060089A229 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9258C4D9289FAA060089A229 /* OverViewTableViewCell.swift */; };
 		9258C4DC289FAA060089A229 /* OverViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9258C4DA289FAA060089A229 /* OverViewTableViewCell.xib */; };
 		9270A27028A41BC6009A45CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270A26F28A41BC6009A45CD /* TMDBAPIManager.swift */; };
+		9270A27428A4CA81009A45CD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270A27328A4CA81009A45CD /* MapViewController.swift */; };
 		92C66E04289AC9EA001EB68A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92C66E03289AC9EA001EB68A /* Alamofire */; };
 		92C66E07289AC9F7001EB68A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 92C66E06289AC9F7001EB68A /* SwiftyJSON */; };
 		92C66E0D289B9CEE001EB68A /* MovieDeatailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C66E0B289B9CEE001EB68A /* MovieDeatailTableViewCell.swift */; };
@@ -44,6 +45,7 @@
 		9258C4D9289FAA060089A229 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		9258C4DA289FAA060089A229 /* OverViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverViewTableViewCell.xib; sourceTree = "<group>"; };
 		9270A26F28A41BC6009A45CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
+		9270A27328A4CA81009A45CD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		92C66E0B289B9CEE001EB68A /* MovieDeatailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDeatailTableViewCell.swift; sourceTree = "<group>"; };
 		92C66E0C289B9CEE001EB68A /* MovieDeatailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDeatailTableViewCell.xib; sourceTree = "<group>"; };
 		92C66E13289B9DFD001EB68A /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieDetailViewController.swift; path = SeSACTMDBProject/MovieDetailViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -113,6 +115,7 @@
 				92C66E13289B9DFD001EB68A /* MovieDetailViewController.swift */,
 				92E9DF9F2899F6C6004A7A07 /* ViewController.swift */,
 				92E9DFB12899F83B004A7A07 /* SearchViewController.swift */,
+				9270A27328A4CA81009A45CD /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				92E6C62028A331770037E689 /* ReusableViewProtocol.swift in Sources */,
 				9258C4DB289FAA060089A229 /* OverViewTableViewCell.swift in Sources */,
 				92E6C61228A23BE10037E689 /* CustomView.swift in Sources */,
+				9270A27428A4CA81009A45CD /* MapViewController.swift in Sources */,
 				92E6C60F28A239E60037E689 /* CustomCollectionViewCell.swift in Sources */,
 				92E9DFA02899F6C6004A7A07 /* ViewController.swift in Sources */,
 				92C66E1B289BAB64001EB68A /* MainMovieTableViewCell.swift in Sources */,
