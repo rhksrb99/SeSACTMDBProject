@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Kingfisher
+
 /*
  tableView - CollectionView > 프로토콜
  tag
@@ -33,7 +35,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var customBannerCollectionView: UICollectionView!
     @IBOutlet weak var mainTableView: UITableView!
     
-    let color: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple]
+    let colorList: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple]
     
     let numberList: [[Int]] = [
         [Int](1...10),
@@ -43,6 +45,8 @@ class MainViewController: UIViewController {
         [Int](41...50),
         [Int](51...60)
     ]
+    
+    var episodeList:[[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,76 +59,88 @@ class MainViewController: UIViewController {
         customBannerCollectionView.collectionViewLayout = collectionViewLayout()
         customBannerCollectionView.isPagingEnabled = true
         
+        // 에피소드리스트에 불러온 이미지를 순차적으로 저장하는 곳
+        TMDBAPIManager.shared.requestPosterImage { value in
+            dump(value)
+
+            self.episodeList = value
+            self.mainTableView.reloadData()
+        }
+        
+        
+        
     }
     
 
 }
 // MARK: - TableView delegate
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numberList.count
+        return episodeList.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     // 내부 매개변수 tableView를 통해 테이블뷰를 특정
     // 테이블뷰 객체가 하나 일 경우에는 내부 매개변수를 활용하지 않아도 문제가 생기지 않는다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("MainTableViewCell", #function, indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseIdentifier, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+
+        cell.lb_title.text = "'\(TMDBAPIManager.shared.tvList[indexPath.section].0)'과(와) 비슷한 프로그램"
         
         cell.backgroundColor = .gray
-        cell.cotentCollectionView.delegate = self
-        cell.cotentCollectionView.dataSource = self
+        cell.contentCollectionView.delegate = self
+        cell.contentCollectionView.dataSource = self
         // 셀의 태그에 인덱스의 섹션을 지정
-        cell.cotentCollectionView.tag = indexPath.section
+        cell.contentCollectionView.tag = indexPath.section
         // 셀의 컬랙션뷰에 커스텀한 컬렉션뷰를 연결
-        cell.cotentCollectionView.register(UINib(nibName: CustomCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.reuseIdentifier)
-        cell.cotentCollectionView.reloadData()
+        cell.contentCollectionView.register(UINib(nibName: CustomCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.reuseIdentifier)
+        cell.contentCollectionView.reloadData()
         return cell
-        
+
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // 3번째 섹션에 넷플릭스의 인기 영화 보여주 듯
         // 다른 셀보다 크기를 크기를 크게 하고 싶을 떄
         // 이런식으로 지정해줄 수 있다.
-        return indexPath.section == 3 ? 350 : 190
+        return 240
     }
 }
 
 // MARK: - CollectionView Delegate
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return collectionView == customBannerCollectionView ? color.count : numberList[collectionView.tag].count
+
+        return collectionView == customBannerCollectionView ? colorList.count : episodeList[collectionView.tag].count
     }
-    
+
     // customBannerCollectionView가 들어올 수도 있고
     // 테이블뷰 안에 들어있는 컬렉션뷰가 들어올 수 도 있다.
     // 내부 매개변수가 아닌 명확한 아웃렛을 사용할 경우, 셀이 재사용 되면 특정 collectionView 셀을 재사용하게 될 수 있다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        print("MainCollectionViewController", #function, indexPath)
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseIdentifier, for: indexPath) as? CustomCollectionViewCell else { return UICollectionViewCell() }
+        
         if collectionView == customBannerCollectionView {
-            cell.customView.mainImage.backgroundColor = color[indexPath.item]
+            cell.customView.mainImage.backgroundColor = colorList[indexPath.item]
         }else {
-            cell.backgroundColor = .green
-            cell.customView.mainImage.backgroundColor = .systemIndigo
+            cell.customView.mainImage.backgroundColor = .gray
             cell.customView.lb_main.textColor = .white
-//            if indexPath.item < 2 {
-            cell.customView.lb_main.text = "\(numberList[collectionView.tag][indexPath.item])"
-//            }
+            
+            let url = URL(string: "\(TMDBAPIManager.shared.imageURL)\(episodeList[collectionView.tag][indexPath.item])")
+            cell.customView.mainImage.kf.setImage(with: url)
+            cell.customView.lb_main.text = nil
         }
         
         return cell
     }
-    
+
     func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -132,7 +148,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
+
         return layout
     }
 }

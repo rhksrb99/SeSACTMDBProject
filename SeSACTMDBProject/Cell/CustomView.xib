@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="401" height="197"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-qG-249">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-qG-249">
                     <rect key="frame" x="8" y="8" width="385" height="181"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-cS-6Xm">
@@ -43,7 +42,6 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="i2Z-qG-249" secondAttribute="trailing" constant="8" id="5dP-v5-oVG"/>
@@ -52,7 +50,7 @@
                 <constraint firstAttribute="bottom" secondItem="i2Z-qG-249" secondAttribute="bottom" constant="8" id="Umc-c5-wga"/>
                 <constraint firstItem="LqW-69-FYO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YEc-Tg-ptO"/>
                 <constraint firstItem="i2Z-qG-249" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ea1-Lv-vE4"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SjM-cS-6Xm" secondAttribute="trailing" constant="8" id="iJW-oT-L8Z"/>
+                <constraint firstAttribute="trailing" secondItem="SjM-cS-6Xm" secondAttribute="trailing" constant="8" id="iJW-oT-L8Z"/>
                 <constraint firstItem="SjM-cS-6Xm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="mHe-0C-uKs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -10,12 +10,12 @@ import UIKit
 class MainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lb_title: UILabel!
-    @IBOutlet weak var cotentCollectionView: UICollectionView!
+    @IBOutlet weak var contentCollectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
-        collectionViewLayout()
+        contentCollectionView.collectionViewLayout = collectionViewLayout()
         print("MainTableViewCell", #function)
     }
 
@@ -25,8 +25,7 @@ class MainTableViewCell: UITableViewCell {
         lb_title.text = "넷플릭스 인기 컨텐츠"
         lb_title.backgroundColor = .lightGray
         
-        cotentCollectionView.backgroundColor = .clear
-        cotentCollectionView.collectionViewLayout = collectionViewLayout()
+        contentCollectionView.backgroundColor = .clear
     }
     
     func collectionViewLayout() -> UICollectionViewFlowLayout {
@@ -37,7 +36,7 @@ class MainTableViewCell: UITableViewCell {
         // 어느정도 간격을 두고 있기 때문에 16정도를 기본값으로 줬다.
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 130)
+        layout.itemSize = CGSize(width: 300, height: 130)
         return layout
     }
     

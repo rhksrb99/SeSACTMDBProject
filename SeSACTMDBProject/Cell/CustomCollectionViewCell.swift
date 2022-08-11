@@ -13,21 +13,23 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("MainCollectionViewCell", #function)
-        setupUI()
+        
+        
+//        setupUI()
+//        prepareForReuse()
         
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        customView.lb_main.text = nil
-    }
-    
-    func setupUI() {
-        customView.backgroundColor = .clear
-        customView.mainImage.backgroundColor = .blue
-        customView.mainImage.layer.cornerRadius = 8
-        customView.btn_heart.tintColor = .black
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        customView.lb_main.text = nil
+//    }
+//
+//    func setupUI() {
+//        customView.backgroundColor = .clear
+//        customView.mainImage.backgroundColor = .blue
+//        customView.mainImage.layer.cornerRadius = 8
+//        customView.btn_heart.tintColor = .black
+//    }
 
 }
