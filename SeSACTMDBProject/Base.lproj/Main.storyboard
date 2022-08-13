@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k7x-qI-FaG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oae-9Y-bdu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -182,6 +182,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qd8-rf-nmg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="RsV-6y-Tq7">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" id="Oae-9Y-bdu" customClass="WeatherViewController" customModule="SeSACTMDBProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8YO-Mt-GKc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-Nx-ecs">
+                                <rect key="frame" x="20" y="64" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="qfM-Xy-At5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c34-zj-z1y">
+                                <rect key="frame" x="20" y="164" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="RL9-jx-fpV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Du-Ao-Kzn">
+                                <rect key="frame" x="20" y="264" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ejY-6r-TPE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgG-WB-v6F">
+                                <rect key="frame" x="20" y="364" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="QVG-08-F44"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XEo-7m-lMz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YgG-WB-v6F" firstAttribute="top" secondItem="6Du-Ao-Kzn" secondAttribute="bottom" constant="20" id="4tX-tt-nLU"/>
+                            <constraint firstItem="6Du-Ao-Kzn" firstAttribute="leading" secondItem="XEo-7m-lMz" secondAttribute="leading" constant="20" id="AX0-ql-teL"/>
+                            <constraint firstItem="c34-zj-z1y" firstAttribute="top" secondItem="nuk-Nx-ecs" secondAttribute="bottom" constant="20" id="Al6-2d-zLi"/>
+                            <constraint firstItem="YgG-WB-v6F" firstAttribute="leading" secondItem="XEo-7m-lMz" secondAttribute="leading" constant="20" id="Cv4-Go-YCq"/>
+                            <constraint firstItem="c34-zj-z1y" firstAttribute="leading" secondItem="XEo-7m-lMz" secondAttribute="leading" constant="20" id="FAh-an-3Tj"/>
+                            <constraint firstItem="XEo-7m-lMz" firstAttribute="trailing" secondItem="6Du-Ao-Kzn" secondAttribute="trailing" constant="20" id="I03-5G-RD2"/>
+                            <constraint firstItem="XEo-7m-lMz" firstAttribute="trailing" secondItem="YgG-WB-v6F" secondAttribute="trailing" constant="20" id="SGd-9A-l7P"/>
+                            <constraint firstItem="XEo-7m-lMz" firstAttribute="trailing" secondItem="c34-zj-z1y" secondAttribute="trailing" constant="20" id="erA-D5-ON2"/>
+                            <constraint firstItem="nuk-Nx-ecs" firstAttribute="leading" secondItem="XEo-7m-lMz" secondAttribute="leading" constant="20" id="l7f-ZB-K4I"/>
+                            <constraint firstItem="nuk-Nx-ecs" firstAttribute="top" secondItem="XEo-7m-lMz" secondAttribute="top" constant="20" id="n6o-T4-Bea"/>
+                            <constraint firstItem="6Du-Ao-Kzn" firstAttribute="top" secondItem="c34-zj-z1y" secondAttribute="bottom" constant="20" id="yBc-24-3Ji"/>
+                            <constraint firstItem="XEo-7m-lMz" firstAttribute="trailing" secondItem="nuk-Nx-ecs" secondAttribute="trailing" constant="20" id="zBM-z6-5MF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="lb_weatherInfos" destination="nuk-Nx-ecs" collectionClass="NSMutableArray" id="Kql-se-8WZ"/>
+                        <outletCollection property="lb_weatherInfos" destination="c34-zj-z1y" collectionClass="NSMutableArray" id="2lc-fL-sVs"/>
+                        <outletCollection property="lb_weatherInfos" destination="6Du-Ao-Kzn" collectionClass="NSMutableArray" id="Dfw-w4-53k"/>
+                        <outletCollection property="lb_weatherInfos" destination="YgG-WB-v6F" collectionClass="NSMutableArray" id="p1k-Tt-62n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3G-iv-2wf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="767"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ztk-Z9-2rg">

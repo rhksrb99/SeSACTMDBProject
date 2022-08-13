@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92270C9E28A6388D0076EDB7 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92270C9D28A6388D0076EDB7 /* WeatherViewController.swift */; };
 		9258C4DB289FAA060089A229 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9258C4D9289FAA060089A229 /* OverViewTableViewCell.swift */; };
 		9258C4DC289FAA060089A229 /* OverViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9258C4DA289FAA060089A229 /* OverViewTableViewCell.xib */; };
 		9270A27028A41BC6009A45CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270A26F28A41BC6009A45CD /* TMDBAPIManager.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92270C9D28A6388D0076EDB7 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		9258C4D9289FAA060089A229 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		9258C4DA289FAA060089A229 /* OverViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverViewTableViewCell.xib; sourceTree = "<group>"; };
 		9270A26F28A41BC6009A45CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				92E9DF9F2899F6C6004A7A07 /* ViewController.swift */,
 				92E9DFB12899F83B004A7A07 /* SearchViewController.swift */,
 				9270A27328A4CA81009A45CD /* MapViewController.swift */,
+				92270C9D28A6388D0076EDB7 /* WeatherViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				9258C4DB289FAA060089A229 /* OverViewTableViewCell.swift in Sources */,
 				92E6C61228A23BE10037E689 /* CustomView.swift in Sources */,
 				9270A27428A4CA81009A45CD /* MapViewController.swift in Sources */,
+				92270C9E28A6388D0076EDB7 /* WeatherViewController.swift in Sources */,
 				92E6C60F28A239E60037E689 /* CustomCollectionViewCell.swift in Sources */,
 				92E9DFA02899F6C6004A7A07 /* ViewController.swift in Sources */,
 				92C66E1B289BAB64001EB68A /* MainMovieTableViewCell.swift in Sources */,

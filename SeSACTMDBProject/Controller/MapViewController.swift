@@ -81,37 +81,24 @@ class MapViewController: UIViewController {
         self.theater.longitude = self.theaterList[listnum].longitude
         self.theater.latitude = self.theaterList[listnum].latitude
         
-        self.setResignAnnotation(center: self.theater, title: self.theaterList[listnum].location)
+        self.setRegionAnnotation(center: self.theater, title: self.theaterList[listnum].location)
     }
     
     
-    func setResignAnnotation(center: CLLocationCoordinate2D, title:String ) {
+    func setRegionAnnotation(center: CLLocationCoordinate2D, title:String ) {
         // 지도 중심 기반으로 보여질 범위 설정
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 20000, longitudinalMeters: 20000)
         
         mapView.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
         annotation.coordinate = center
-//        let newCenter = defaultLocation()
-        
-//        if center.longitude == newCenter.longitude {
-            annotation.title = title
-//        }else {
-//            annotation.title = "현위치"
-//        }
+        annotation.title = title
         mapView.addAnnotation(annotation)
     }
     
-//    func defaultLocation() {
-//    }-> CLLocationCoordinate2D{
-//        // 지도의 중심이 될 경.위도 기본설정 ( 캠퍼스가 된다. )
-//        // 37.517829, 126.886270
-//
-//        return center
-//    }
-    
 }
 
+// MARK: - Extension
 // 위치 관련된 User Defined 메서드
 extension MapViewController {
     // 순서 7번. iOS 버전에 따른 분기 처리 및 iOS 위치 서비스 활성화 여부 확인
@@ -146,7 +133,7 @@ extension MapViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
             
-            setResignAnnotation(center: center, title: "SeSAC 영등포 캠퍼스")
+            setRegionAnnotation(center: center, title: "SeSAC 영등포 캠퍼스")
         case .restricted, .denied:
             print("DENIED, 아이폰 설정으로 유도")
             showLocationServiceAlert()
@@ -187,7 +174,9 @@ extension MapViewController: CLLocationManagerDelegate {
         print(#function, locations)
         
         if let coordinate = locations.last?.coordinate {
-            setResignAnnotation(center: coordinate,title: "현위치")
+            setRegionAnnotation(center: coordinate,title: "현위치")
+            // 위.경도를 받아와 해당 지역의 날씨를 출력
+            
         }
         // 무한으로 위치를 업데이트를 하기 때문에 위치를 정상적으로 업데이트 하면
         // 더이상 업데이트를 하지 안도록 하는 코드
