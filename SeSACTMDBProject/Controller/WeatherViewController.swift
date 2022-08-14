@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var img_weatherIcon: UIImageView!
     @IBOutlet weak var lb_comment: UILabel!
     @IBOutlet var buttons: [UIButton]!
-    let comments = ["좋은 하루 보내세요!", "행복한 하루 보내세요!", "오늘은 좋을 일이 생길 것만 같아요!"]
+    let comments = [" 좋은 하루 보내세요! ", " 행복한 하루 보내세요! ", " 오늘은 좋을 일이 생길 것만 같아요! "]
     
     // 임의의 위치 지정
     // 추후 사용자의 위치를 받아와서 적용할 예정
@@ -31,9 +31,10 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadWeather()
-        lb_today.text = loadTime()
+        loadTime()
 
-//        designLabel(label: lb_today)
+        designLabel(label: lb_today)
+        designLabel(label: lb_comment)
         for i in 0...lb_weatherInfos.count - 1{
             designLabel(label: lb_weatherInfos[i])
             designButton(btn: buttons[i])
@@ -56,18 +57,17 @@ class WeatherViewController: UIViewController {
     }
     
     func designLabel(label: UILabel) {
-        label.text = ""
         label.layer.borderWidth = 2
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.cornerRadius = 8
     }
     
-    func loadTime() -> String{
+    func loadTime(){
         let format = DateFormatter()
-        format.dateFormat = "MM월 dd일 HH시 mm분"
+        format.dateFormat = " MM월 dd일 HH시 mm분 "
         let result = format.string(from: Date())
         print(result)
-        return result
+        lb_today.text = result
     }
     
     func loadWeather() {
@@ -116,7 +116,7 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func reloadLocation() {
-        lb_userLocation.text = "위치를 불러오고 있습니다."
+        lb_userLocation.text = " 위치를 불러오고 있습니다. "
         lb_weatherInfos.removeAll()
         loadWeather()
     }
