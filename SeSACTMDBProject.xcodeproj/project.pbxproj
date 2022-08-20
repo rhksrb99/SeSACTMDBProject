@@ -12,6 +12,8 @@
 		9258C4DC289FAA060089A229 /* OverViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9258C4DA289FAA060089A229 /* OverViewTableViewCell.xib */; };
 		9270A27028A41BC6009A45CD /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270A26F28A41BC6009A45CD /* TMDBAPIManager.swift */; };
 		9270A27428A4CA81009A45CD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270A27328A4CA81009A45CD /* MapViewController.swift */; };
+		92B5FB8828ABE40D0073D5AC /* SeSACTMDBFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B5FB8428ABE3FF0073D5AC /* SeSACTMDBFramework.framework */; };
+		92B5FB8928ABE40D0073D5AC /* SeSACTMDBFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92B5FB8428ABE3FF0073D5AC /* SeSACTMDBFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92C66E04289AC9EA001EB68A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92C66E03289AC9EA001EB68A /* Alamofire */; };
 		92C66E07289AC9F7001EB68A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 92C66E06289AC9F7001EB68A /* SwiftyJSON */; };
 		92C66E0D289B9CEE001EB68A /* MovieDeatailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C66E0B289B9CEE001EB68A /* MovieDeatailTableViewCell.swift */; };
@@ -42,12 +44,44 @@
 		92E9DFB62899F9BC004A7A07 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9DFB52899F9BC004A7A07 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		92B5FB8328ABE3FF0073D5AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B5FB7E28ABE3FF0073D5AC /* SeSACTMDBFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 92B5FB5428ABD6170073D5AC;
+			remoteInfo = SeSACTMDBFramework;
+		};
+		92B5FB8528ABE3FF0073D5AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92B5FB7E28ABE3FF0073D5AC /* SeSACTMDBFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 92B5FB5E28ABD6170073D5AC;
+			remoteInfo = SeSACTMDBFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92B5FB8A28ABE40E0073D5AC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92B5FB8928ABE40D0073D5AC /* SeSACTMDBFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		92270C9D28A6388D0076EDB7 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		9258C4D9289FAA060089A229 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		9258C4DA289FAA060089A229 /* OverViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverViewTableViewCell.xib; sourceTree = "<group>"; };
 		9270A26F28A41BC6009A45CD /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		9270A27328A4CA81009A45CD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		92B5FB7E28ABE3FF0073D5AC /* SeSACTMDBFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACTMDBFramework.xcodeproj; path = ../SeSACTMDBFramework/SeSACTMDBFramework.xcodeproj; sourceTree = "<group>"; };
 		92C66E0B289B9CEE001EB68A /* MovieDeatailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDeatailTableViewCell.swift; sourceTree = "<group>"; };
 		92C66E0C289B9CEE001EB68A /* MovieDeatailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDeatailTableViewCell.xib; sourceTree = "<group>"; };
 		92C66E13289B9DFD001EB68A /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieDetailViewController.swift; path = SeSACTMDBProject/MovieDetailViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -82,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B5FB8828ABE40D0073D5AC /* SeSACTMDBFramework.framework in Frameworks */,
 				92C66E1F289C5355001EB68A /* Kingfisher in Frameworks */,
 				92C66E07289AC9F7001EB68A /* SwiftyJSON in Frameworks */,
 				92C66E04289AC9EA001EB68A /* Alamofire in Frameworks */,
@@ -91,6 +126,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92B5FB7F28ABE3FF0073D5AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92B5FB8428ABE3FF0073D5AC /* SeSACTMDBFramework.framework */,
+				92B5FB8628ABE3FF0073D5AC /* SeSACTMDBFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92B5FB8728ABE40D0073D5AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		92C66E0F289B9CF5001EB68A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +196,11 @@
 		92E9DF8F2899F6C6004A7A07 = {
 			isa = PBXGroup;
 			children = (
+				92B5FB7E28ABE3FF0073D5AC /* SeSACTMDBFramework.xcodeproj */,
 				92E9DFAF2899F7D2004A7A07 /* .gitignore */,
 				92E9DF9A2899F6C6004A7A07 /* SeSACTMDBProject */,
 				92E9DF992899F6C6004A7A07 /* Products */,
+				92B5FB8728ABE40D0073D5AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +240,7 @@
 				92E9DF942899F6C6004A7A07 /* Sources */,
 				92E9DF952899F6C6004A7A07 /* Frameworks */,
 				92E9DF962899F6C6004A7A07 /* Resources */,
+				92B5FB8A28ABE40E0073D5AC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,12 +287,35 @@
 			);
 			productRefGroup = 92E9DF992899F6C6004A7A07 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 92B5FB7F28ABE3FF0073D5AC /* Products */;
+					ProjectRef = 92B5FB7E28ABE3FF0073D5AC /* SeSACTMDBFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				92E9DF972899F6C6004A7A07 /* SeSACTMDBProject */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		92B5FB8428ABE3FF0073D5AC /* SeSACTMDBFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SeSACTMDBFramework.framework;
+			remoteRef = 92B5FB8328ABE3FF0073D5AC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		92B5FB8628ABE3FF0073D5AC /* SeSACTMDBFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SeSACTMDBFrameworkTests.xctest;
+			remoteRef = 92B5FB8528ABE3FF0073D5AC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		92E9DF962899F6C6004A7A07 /* Resources */ = {

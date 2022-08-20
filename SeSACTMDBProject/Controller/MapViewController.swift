@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SeSACTMDBFramework
 
 // 순서 1번. 임포트
 import MapKit
@@ -119,8 +120,8 @@ extension MapViewController {
         if CLLocationManager.locationServicesEnabled() {
             checkUserCurrent(locationManager.authorizationStatus)
         }
-        
     }
+    
     
     // 순서 8번. 사용자의 위치 권한 상태 확인
     // 사용자가 위치를 허용했는지, 거부했는지 아직 선택하지 않았는지 등을 확인
